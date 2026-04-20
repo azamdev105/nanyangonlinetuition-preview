@@ -230,13 +230,19 @@ ul {
   justify-content: center;
 }
 
-/* Always two-column grid */
+/* Single column on mobile, two columns from 768px */
 .hero__inner {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1fr;
   gap: clamp(1rem, 3vw, 3.5rem);
   align-items: center;
   width: 100%;
+}
+
+@media (min-width: 768px) {
+  .hero__inner {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
 }
 
 /* Text column — always left-aligned */
@@ -284,10 +290,16 @@ ul {
   font-size: clamp(0.75rem, 1.3vw, 0.875rem);
 }
 
-/* Photo column */
+/* Photo column — hidden on mobile, visible from 768px */
 .hero__media {
-  display: flex;
-  justify-content: center;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hero__media {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .hero__photo-wrap {
@@ -302,21 +314,6 @@ ul {
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-soft);
   background-color: rgba(0, 80, 115, 0.08);
-}
-
-/* Badge */
-.hero__badge {
-  position: absolute;
-  top: 16px;
-  left: 8px;
-  background-color: var(--color-gold);
-  color: var(--color-ink);
-  font-size: clamp(0.6875rem, 1.2vw, 0.8125rem);
-  font-weight: 600;
-  padding: 0.5rem 0.875rem;
-  border-radius: var(--radius-sm);
-  box-shadow: 0 4px 12px rgba(0, 80, 115, 0.18);
-  white-space: nowrap;
 }
 
 /* Next section link */
