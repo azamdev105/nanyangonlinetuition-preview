@@ -71,7 +71,7 @@
 
   /* Layout */
   --container-max:      1200px;
-  --container-px:       clamp(1.25rem, 4vw, 2.5rem);
+  --container-px:       clamp(1rem, 4vw, 2.5rem);
 }
 
 /* =========================================================
@@ -111,7 +111,6 @@ ul {
   list-style: none;
 }
 
-/* Visible focus state */
 :focus-visible {
   outline: 2px solid var(--color-ink);
   outline-offset: 2px;
@@ -157,12 +156,12 @@ ul {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
+  padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(1rem, 3vw, 1.5rem);
   background-color: var(--color-gold);
   color: var(--color-ink);
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 0.9375rem;
+  font-size: clamp(0.8125rem, 1.5vw, 0.9375rem);
   letter-spacing: 0.02em;
   border: none;
   border-radius: var(--radius-pill);
@@ -224,42 +223,30 @@ ul {
 .hero {
   background-color: var(--color-bg);
   min-height: 100svh;
-  padding-top: clamp(4rem, 8vw, 7rem);
-  padding-bottom: clamp(3rem, 6vw, 5rem);
+  padding-block: clamp(1.5rem, 4vw, 3rem);
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
-/* Grid wrapper */
+/* Always two-column grid */
 .hero__inner {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(2rem, 5vw, 3.5rem);
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(1rem, 3vw, 3.5rem);
+  align-items: center;
   width: 100%;
 }
 
-@media (min-width: 768px) {
-  .hero__inner {
-    grid-template-columns: 1.1fr 0.9fr;
-    align-items: center;
-  }
-}
-
-/* Text column */
+/* Text column — always left-aligned */
 .hero__copy {
-  text-align: center;
-}
-
-@media (min-width: 768px) {
-  .hero__copy {
-    text-align: left;
-  }
+  text-align: left;
 }
 
 /* Eyebrow */
 .hero__eyebrow {
-  font-size: 0.8125rem;
+  font-size: clamp(0.6875rem, 1.4vw, 0.8125rem);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -270,7 +257,7 @@ ul {
 /* Headline */
 .hero__headline {
   font-family: var(--font-display);
-  font-size: clamp(2.25rem, 6vw, 4rem);
+  font-size: clamp(1.5rem, 6vw, 4rem);
   font-weight: 700;
   line-height: 1.1;
   color: var(--color-ink);
@@ -279,63 +266,22 @@ ul {
 
 /* Subhead */
 .hero__sub {
-  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  font-size: clamp(0.875rem, 1.5vw, 1.125rem);
   line-height: 1.55;
   color: var(--color-ink-muted);
   max-width: 52ch;
-  margin-inline: auto;
   margin-bottom: 2rem;
-}
-
-@media (min-width: 768px) {
-  .hero__sub {
-    margin-inline: 0;
-  }
 }
 
 /* CTA wrapper */
 .hero__actions {
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
 }
 
-/* Trust list */
+/* Trust line */
 .hero__trust {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
   color: var(--color-ink-muted);
-  font-size: 0.875rem;
-  align-items: center;
-}
-
-@media (min-width: 640px) {
-  .hero__trust {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0.5rem 0;
-    justify-content: center;
-  }
-
-  .hero__trust li {
-    display: flex;
-    align-items: center;
-  }
-
-  .hero__trust li::after {
-    content: '·';
-    padding-inline: 0.75rem;
-    color: var(--color-ink-muted);
-  }
-
-  .hero__trust li:last-child::after {
-    content: none;
-  }
-}
-
-@media (min-width: 768px) {
-  .hero__trust {
-    justify-content: flex-start;
-  }
+  font-size: clamp(0.75rem, 1.3vw, 0.875rem);
 }
 
 /* Photo column */
@@ -348,15 +294,14 @@ ul {
   position: relative;
   max-width: 480px;
   width: 100%;
-  margin-inline: auto;
 }
 
 .hero__photo {
   width: 100%;
   aspect-ratio: 4 / 5;
-  object-fit: cover;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-soft);
+  background-color: rgba(0, 80, 115, 0.08);
 }
 
 /* Badge */
@@ -366,7 +311,7 @@ ul {
   left: 8px;
   background-color: var(--color-gold);
   color: var(--color-ink);
-  font-size: 0.8125rem;
+  font-size: clamp(0.6875rem, 1.2vw, 0.8125rem);
   font-weight: 600;
   padding: 0.5rem 0.875rem;
   border-radius: var(--radius-sm);
@@ -374,17 +319,11 @@ ul {
   white-space: nowrap;
 }
 
-@media (min-width: 768px) {
-  .hero__badge {
-    left: -12px;
-  }
-}
-
 /* Next section link */
 .hero__next-link {
   display: block;
   text-align: center;
-  margin-top: clamp(2.5rem, 5vw, 4rem);
+  margin-top: clamp(2rem, 4vw, 4rem);
   color: var(--color-ink);
   font-weight: 500;
   font-size: 0.9375rem;
