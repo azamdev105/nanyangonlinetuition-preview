@@ -1,0 +1,396 @@
+/* =========================================================
+   FONT FACES
+   ========================================================= */
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('fonts/playfair-display-v40-latin/playfair-display-v40-latin-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('fonts/playfair-display-v40-latin/playfair-display-v40-latin-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('fonts/inter-v20-latin/inter-v20-latin-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('fonts/inter-v20-latin/inter-v20-latin-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('fonts/inter-v20-latin/inter-v20-latin-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =========================================================
+   DESIGN TOKENS
+   ========================================================= */
+
+:root {
+  /* Colours */
+  --color-bg:           #FBF6EF;
+  --color-bg-alt:       #FFFFFF;
+  --color-ink:          #005073;
+  --color-ink-muted:    #4A6B7A;
+  --color-ink-small:    rgba(0, 80, 115, 0.70);
+  --color-gold:         #F6C544;
+  --color-gold-hover:   #E8B730;
+  --color-border:       rgba(0, 80, 115, 0.12);
+
+  /* Shadow */
+  --shadow-soft:        0 20px 60px -20px rgba(0, 80, 115, 0.25);
+
+  /* Fonts */
+  --font-display:       'Playfair Display', Georgia, serif;
+  --font-body:          'Inter', system-ui, sans-serif;
+
+  /* Radii */
+  --radius-sm:          6px;
+  --radius-md:          12px;
+  --radius-pill:        999px;
+
+  /* Layout */
+  --container-max:      1200px;
+  --container-px:       clamp(1.25rem, 4vw, 2.5rem);
+}
+
+/* =========================================================
+   RESET & BASE
+   ========================================================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-ink);
+  background-color: var(--color-bg);
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Visible focus state */
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   ACCESSIBILITY — SKIP LINK
+   ========================================================= */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 200;
+  padding: 0.5rem 1rem;
+  background: var(--color-ink);
+  color: #fff;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  transition: top 0.15s;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.container {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-px);
+}
+
+/* =========================================================
+   BUTTON — GOLD PILL
+   ========================================================= */
+
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--color-gold);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  letter-spacing: 0.02em;
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-gold:hover {
+  background-color: var(--color-gold-hover);
+  transform: translateY(-1px);
+}
+
+.btn-gold:active {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: var(--color-bg-alt);
+  border-bottom: 1px solid var(--color-border);
+  height: 64px;
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.nav__logo {
+  height: 44px;
+  width: auto;
+}
+
+.nav__logo-link {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .nav {
+    height: 72px;
+  }
+}
+
+/* =========================================================
+   HERO SECTION
+   ========================================================= */
+
+.hero {
+  background-color: var(--color-bg);
+  min-height: 100svh;
+  padding-top: clamp(4rem, 8vw, 7rem);
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Grid wrapper */
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .hero__inner {
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+  }
+}
+
+/* Text column */
+.hero__copy {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .hero__copy {
+    text-align: left;
+  }
+}
+
+/* Eyebrow */
+.hero__eyebrow {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-ink-muted);
+  margin-bottom: 0.75rem;
+}
+
+/* Headline */
+.hero__headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 6vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-ink);
+  margin-bottom: 1.25rem;
+}
+
+/* Subhead */
+.hero__sub {
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  line-height: 1.55;
+  color: var(--color-ink-muted);
+  max-width: 52ch;
+  margin-inline: auto;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .hero__sub {
+    margin-inline: 0;
+  }
+}
+
+/* CTA wrapper */
+.hero__actions {
+  margin-bottom: 2rem;
+}
+
+/* Trust list */
+.hero__trust {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  color: var(--color-ink-muted);
+  font-size: 0.875rem;
+  align-items: center;
+}
+
+@media (min-width: 640px) {
+  .hero__trust {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem 0;
+    justify-content: center;
+  }
+
+  .hero__trust li {
+    display: flex;
+    align-items: center;
+  }
+
+  .hero__trust li::after {
+    content: '·';
+    padding-inline: 0.75rem;
+    color: var(--color-ink-muted);
+  }
+
+  .hero__trust li:last-child::after {
+    content: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero__trust {
+    justify-content: flex-start;
+  }
+}
+
+/* Photo column */
+.hero__media {
+  display: flex;
+  justify-content: center;
+}
+
+.hero__photo-wrap {
+  position: relative;
+  max-width: 480px;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.hero__photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Badge */
+.hero__badge {
+  position: absolute;
+  top: 16px;
+  left: 8px;
+  background-color: var(--color-gold);
+  color: var(--color-ink);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.5rem 0.875rem;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 12px rgba(0, 80, 115, 0.18);
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .hero__badge {
+    left: -12px;
+  }
+}
+
+/* Next section link */
+.hero__next-link {
+  display: block;
+  text-align: center;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  color: var(--color-ink);
+  font-weight: 500;
+  font-size: 0.9375rem;
+}
+
+.hero__next-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
