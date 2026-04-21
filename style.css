@@ -229,12 +229,17 @@ ul {
 
 .hero {
   background-color: var(--color-bg);
-  min-height: 100svh;
   padding-block: clamp(1.5rem, 4vw, 3rem);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    min-height: 100svh;
+  }
 }
 
 /* Single column on mobile, two columns from 768px */
